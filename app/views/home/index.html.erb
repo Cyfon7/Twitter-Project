@@ -1,4 +1,4 @@
 <h1>INDEX</h1>
 
-<%= render 'shared/tweet_layout' %>
+<% @tweets.each { |tweet| render 'shared/tweet_layout', tweet: @tweet } %>
 
