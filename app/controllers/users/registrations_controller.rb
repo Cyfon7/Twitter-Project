@@ -10,9 +10,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    format.html { redirect_to root_path, alert: 'Welcome' }
+  end
 
   # GET /resource/edit
   # def edit
