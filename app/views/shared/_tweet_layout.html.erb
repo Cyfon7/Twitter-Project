@@ -9,7 +9,7 @@
         <%= tweet.content %>
     </div>
     <div class="row text-center mt-2">
-        <div class="col"> Likes: <%= likes %> </div>
+        <div class="col"><%= link_to 'Likes:', root_path %><%= likes %> </div>
         <div class="col"> Retweets: <%= tweet.retweets.count %></div>
     </div>
   </div>
