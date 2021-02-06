@@ -4,6 +4,8 @@ class Tweet < ApplicationRecord
     belongs_to :user
     has_many :likes#, as: :publication
     
+    validates :content, presence: true
+
     scope :rt_counter, -> (tweet) {
         self.where(tweet_id: tweet.id).count
     }
