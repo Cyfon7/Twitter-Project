@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :likes#, as: :publication
   has_many :tweets
+
+  validates :name, :email, :image, presence: true
 end

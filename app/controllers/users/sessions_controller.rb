@@ -9,10 +9,9 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  def create
-    super
-    format.html { redirect_to root_path, alert: 'Welcome' }
-  end
+  # def create
+  #  super
+  # end
 
   # DELETE /resource/sign_out
   # def destroy
