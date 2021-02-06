@@ -1,6 +1,8 @@
 <h1>INDEX</h1>
 
-<% @tweets.first(50).each do |tweet| %>
-    <%= render 'shared/tweet_layout', tweet: tweet, user: tweet.user, likes: @likes.like_counter(tweet) %>
-<% end %>
+<ul class="list-unstyled container px-5">
+    <% @tweets.first(50).each do |tweet| %>
+        <%= render 'shared/tweet_layout', tweet: tweet, user: tweet.user, likes: @likes.like_counter(tweet) %>
+    <% end %>
+</ul>
 
