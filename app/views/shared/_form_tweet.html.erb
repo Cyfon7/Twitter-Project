@@ -1,15 +1,8 @@
 <%= form_with(model: tweet, local: true) do |form| %>
-  <% if tweet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
 
-      <ul>
-      <% tweet.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <% if tweet.errors.any? %>
+        <%= render 'shared/tweet_errors', tweet: tweet %>
+    <% end %>
 
     <li class="media border border-primary p-2">
         <img src="<%= current_user.image %>" class="mr-3 border border-primary rounded-circle" alt="..." width="64" height="64">
