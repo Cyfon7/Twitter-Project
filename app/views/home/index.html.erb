@@ -1,4 +1,6 @@
 <h1>INDEX</h1>
 
-<% @tweets.each { |tweet| render 'shared/tweet_layout', tweet: @tweet } %>
+<% @tweets.first(50).each do |tweet| %>
+    <%= render 'shared/tweet_layout', tweet: tweet, user: tweet.user, likes: @likes.like_counter(tweet) %>
+<% end %>
 

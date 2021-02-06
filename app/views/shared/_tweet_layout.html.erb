@@ -1,16 +1,16 @@
 <div class="media border border-primary p-2">
-  <img src="<%= User.last.image %>" class="mr-3 rounded-circle" alt="..." width="64" height="64">
+  <img src="<%= user.image %>" class="mr-3 border border-primary rounded-circle" alt="..." width="64" height="64">
   <div class="media-body">
     <div class="d-flex w-100 justify-content-between">
-        <h5 class="mt-0"><%= User.last.name %></h5>
-        <small>3 days ago</small>
+        <h5 class="mt-0"><%= user.name %></h5>
+        <small><%= tweet.created_at %></small>
     </div>
     <div>
-        content
+        <%= tweet.content %>
     </div>
     <div class="row text-center mt-2">
-        <div class="col"> Likes </div>
-        <div class="col"> Retweets </div>
+        <div class="col"> Likes: <%= likes %> </div>
+        <div class="col"> Retweets: <%= tweet.retweets.count %></div>
     </div>
   </div>
 </div>
