@@ -1,8 +1,9 @@
-<h1>INDEX</h1>
-
 <ul class="list-unstyled container px-5">
-    <% @tweets.first(50).each do |tweet| %>
+    <% @tweets.each do |tweet| %>
         <%= render 'shared/tweet_layout', tweet: tweet, user: tweet.user, likes: @likes.like_counter(tweet) %>
     <% end %>
 </ul>
 
+<div class="text-center">
+    <%= link_to 'Show more Tweets', path_to_next_page(@tweets) %>
+</div>
