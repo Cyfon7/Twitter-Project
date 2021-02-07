@@ -6,13 +6,19 @@
                     <li><%= like.tweet_id %></li>
                 <% end %>
             </ul> <!-- Uncomment to show a list of Tweets IDs Liked by current_user -->
-            <%= render 'shared/form_tweet', tweet: @tweet %>
+            <% byebug %>
+       
+            
+            <%= render 'shared/form_retweet', tweet: @tweet, retweet: Tweet.find(2)%> <!-- @tweets.last %> -->
+       
+       <!--     <%= render 'shared/form_tweet', tweet: @tweet %> -->
+        
+
     <% end %>
 
     <% @tweets.each do |tweet| %>
         <%= render 'shared/tweet_layout', tweet: tweet, user: tweet.user %>
     <% end %>
-    
 </ul>
 
 <div class="text-center">

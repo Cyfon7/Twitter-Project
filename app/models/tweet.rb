@@ -6,8 +6,4 @@ class Tweet < ApplicationRecord
     
     validates :content, presence: true
 
-    scope :rt_counter, -> (tweet) {
-        self.where(tweet_id: tweet.id).count
-    }
-    
 end

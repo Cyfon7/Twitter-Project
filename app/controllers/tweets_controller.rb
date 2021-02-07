@@ -21,8 +21,12 @@ class TweetsController < ApplicationController
 
   # POST /tweets or /tweets.json
   def create
+    byebug
+  
     @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
+  
+    byebug
 
     respond_to do |format|
       if @tweet.save
@@ -65,6 +69,6 @@ class TweetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tweet_params
-      params.require(:tweet).permit(:content)
+      params.require(:tweet).permit(:content, :tweet_id)
     end
 end
