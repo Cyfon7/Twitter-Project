@@ -2,7 +2,10 @@ class Like < ApplicationRecord
     belongs_to :user#:publication, polymorphic: true
     belongs_to :tweet
 
-    scope :like_counter, -> (tweet) {
-        self.where(tweet_id: tweet.id).count
-    }
+    def self.current_liked(tweet_id, user_id)
+        where(tweet_id: tweet_id, user_id: user_id) != []
+    end
+    
+
+
 end

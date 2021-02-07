@@ -1,11 +1,17 @@
 <ul class="list-unstyled container px-5">
 
     <% if current_user %>
-        <%= render 'shared/form_tweet', tweet: @tweet %>
+            <ul>
+                <% current_user.likes.each do |like| %>
+                    <li><%= like.tweet_id %></li>
+                <% end %>
+            </ul>
+            <%= render 'shared/form_tweet', tweet: @tweet %>
     <% end %>
 
     <% @tweets.each do |tweet| %>
-        <%= render 'shared/tweet_layout', tweet: tweet, user: tweet.user, likes: @likes.like_counter(tweet) %>
+    
+        <%= render 'shared/tweet_layout', tweet: tweet, user: tweet.user %>
     <% end %>
     
 </ul>

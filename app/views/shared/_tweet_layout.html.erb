@@ -6,11 +6,25 @@
         <small><%= tweet.created_at %></small>
     </div>
     <div>
+        <%= tweet.id %>
         <%= tweet.content %>
     </div>
     <div class="row text-center mt-2">
-        <div class="col"><%= link_to 'Likes:', root_path %><%= likes %> </div>
-        <div class="col"> Retweets: <%= tweet.retweets.count %></div>
+      <div class="col">
+        <%= link_to root_path do %>
+
+          <% if current_user && Like.current_liked(tweet.id, current_user.id) %>
+            <i class="fas fa-heart fa-2x"></i> <!-- solid heart -->
+            
+          <% else %>     
+            <i class="far fa-heart fa-2x"></i> <!-- heart -->
+          <% end %>
+
+        <% end %>
+    
+        <%= tweet.likes.count %> 
+      </div>
+      <div class="col"> Retweets: <%= tweet.retweets.count %></div>
     </div>
   </div>
 </li>

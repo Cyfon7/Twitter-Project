@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :tweets
 
   validates :name, :email, :image, presence: true
+
 end
