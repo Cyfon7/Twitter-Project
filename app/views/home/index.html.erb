@@ -1,7 +1,6 @@
 <ul class="list-unstyled container px-5">
 
     <% if current_user %>
-            
             <!--<ul>  
                 <% current_user.likes.each do |like| %>
                     <li><%= like.tweet_id %></li>
@@ -11,7 +10,6 @@
     <% end %>
 
     <% @tweets.each do |tweet| %>
-    
         <%= render 'shared/tweet_layout', tweet: tweet, user: tweet.user %>
     <% end %>
     
