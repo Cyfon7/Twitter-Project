@@ -14,6 +14,10 @@ class Tweet < ApplicationRecord
         find(id).user.image
     end
 
+    def self.get_id(id)
+        find(id).id
+    end
+
     def self.get_created(id)
         find(id).created_at
     end

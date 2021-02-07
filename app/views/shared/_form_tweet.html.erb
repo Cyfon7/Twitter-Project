@@ -8,9 +8,27 @@
         <img src="<%= current_user.image %>" class="mr-3 border border-primary rounded-circle" alt="..." width="64" height="64">
         <div class="media-body">
             <div class="field text-center pr-5">
+            <!-- <%= tweet.id %>  <!-- Uncomment to see Tweet ID -->
                 <%= form.text_area :content, size:"90x2", placeholder: "What's Going On?" %>
+                
+                <% if params[:rt_id] != nil %>
+                    <div class="media border border-primary p-2">
+                        <img src="<%= @tweets.get_author_img(params[:rt_id]) %>" class="mr-3 border border-primary rounded-circle" alt="..." width="64" height="64">
+                        <div class="media-body">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mt-0"><%= @tweets.get_author_name(params[:rt_id]) %></h5>
+                                <small><%= @tweets.get_created(params[:rt_id]) %></small>
+                            </div>
+                            <div>
+                                <!-- <%= @tweets.get_id(params[:rt_id]) %>  <!-- Uncomment to see RTweet ID -->
+                                <p class="text-justify"><%= @tweets.get_content(params[:rt_id]) %></p>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>       
             </div>
             <div class="actions text-right pr-5">
+                <%= form.hidden_field :tweet_id, value: params[:rt_id] %>
                 <%= form.submit %>
             </div>
         </div>

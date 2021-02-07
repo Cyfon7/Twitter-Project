@@ -21,12 +21,10 @@ class TweetsController < ApplicationController
 
   # POST /tweets or /tweets.json
   def create
-    byebug
-  
+ 
     @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
   
-    byebug
 
     respond_to do |format|
       if @tweet.save

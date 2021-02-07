@@ -7,11 +7,9 @@
                 <% end %>
             </ul> <!-- Uncomment to show a list of Tweets IDs Liked by current_user -->
             
-        <% if params[:rt_id] != nil %>
-            <%= render 'shared/form_retweet', tweet: @tweet, retweet: @tweets.find(params[:rt_id]) %> 
-        <% else %>
+
             <%= render 'shared/form_tweet', tweet: @tweet %>
-        <% end %>
+
         
     <% end %>
 

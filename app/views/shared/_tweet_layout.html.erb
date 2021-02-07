@@ -19,8 +19,8 @@
                 <small><%= @tweets.get_created(tweet.tweet_id) %></small>
               </div>
               <div>
-                <!-- <%= Tweet.find(tweet.tweet_id).id %>  <!-- Uncomment to see Tweet ID -->
-                <%= @tweets.get_content(tweet.tweet_id) %>
+                <!-- <%= @tweets.get_id(tweet.tweet_id) %>  <!-- Uncomment to see RTweet ID -->
+                <p class="text-justify"><%= @tweets.get_content(tweet.tweet_id) %></p>
               </div>
             </div>
           </div>
