@@ -13,7 +13,9 @@
       <div class="col">
         <%= render 'shared/like_status', tweet: tweet %>
       </div>
-      <div class="col"> Retweets: <%= tweet.retweets.count %></div>
+      <div class="col">
+        <%= render 'shared/retweet_status', tweet: tweet %>
+      </div>
     </div>
   </div>
 </li>
