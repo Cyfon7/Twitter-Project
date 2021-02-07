@@ -6,22 +6,20 @@
                     <li><%= like.tweet_id %></li>
                 <% end %>
             </ul> <!-- Uncomment to show a list of Tweets IDs Liked by current_user -->
-            <% byebug %>
-       
+            
         <% if params[:rt_id] != nil %>
-        <%= render 'shared/form_retweet', tweet: @tweet, retweet: @tweets.find(params[:rt_id]) %> 
+            <%= render 'shared/form_retweet', tweet: @tweet, retweet: @tweets.find(params[:rt_id]) %> 
         <% else %>
-        <%= render 'shared/form_tweet', tweet: @tweet %>
+            <%= render 'shared/form_tweet', tweet: @tweet %>
         <% end %>
         
-
     <% end %>
 
-    <% @tweets.each do |tweet| %>
+    <% @tweets_page.each do |tweet| %>
         <%= render 'shared/tweet_layout', tweet: tweet, user: tweet.user %>
     <% end %>
 </ul>
 
 <div class="text-center">
-    <%= link_to 'Show more Tweets', path_to_next_page(@tweets) %>
+    <%= link_to 'Show more Tweets', path_to_next_page(@tweets_page) %>
 </div>

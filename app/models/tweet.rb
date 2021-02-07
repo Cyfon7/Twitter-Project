@@ -6,4 +6,20 @@ class Tweet < ApplicationRecord
     
     validates :content, presence: true
 
+    def self.get_author_name(id)
+        find(id).user.name
+    end
+
+    def self.get_author_img(id)
+        find(id).user.image
+    end
+
+    def self.get_created(id)
+        find(id).created_at
+    end
+
+    def self.get_content(id)
+        find(id).content 
+    end
+
 end
