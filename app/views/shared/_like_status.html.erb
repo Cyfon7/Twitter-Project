@@ -1,0 +1,13 @@
+<% if current_user && Like.current_liked(tweet.id, current_user.id) %>
+    <%= link_to like_path(id: Like.current_tweet_like(tweet.id, current_user.id)), method: :delete do %>
+        <i class="fas fa-heart fa-2x"></i> <!-- solid heart -->
+    <% end %>
+<% elsif current_user %> 
+    <%= link_to likes_path(like: {tweet_id: tweet.id, user_id: current_user.id} ), method: :post do %>
+        <i class="far fa-heart fa-2x"></i> <!-- heart -->
+    <% end %>
+<% else %>
+    <i class="far fa-heart fa-2x"></i> <!-- heart -->
+<% end %>
+
+<%= tweet.likes.count %> 
