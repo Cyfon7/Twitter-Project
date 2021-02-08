@@ -1,3 +1,5 @@
+<%= render 'shared/tweet_errors' %>
+
 <ul class="list-unstyled container px-5">
 
     <% if current_user %>
@@ -7,10 +9,7 @@
                 <% end %>
             </ul> <!-- Uncomment to show a list of Tweets IDs Liked by current_user -->
             
-
             <%= render 'shared/form_tweet', tweet: @tweet %>
-
-        
     <% end %>
 
     <% @tweets_page.each do |tweet| %>

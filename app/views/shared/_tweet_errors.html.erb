@@ -1,24 +1,25 @@
-<div class="modal fade" id="ModalTweetError" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
+<% if flash[:error_tw] %>
+    <div class="modal fade" id="ModalTweetError" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
                     
-                <h5 class="modal-title" id="exampleModalLabel"><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><%= pluralize(flash[:tweet_errors], "error") %> prohibited this tweet from being saved:</h5>
 
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <ul>
-                    <% tweet.errors.full_messages.each do |message| %>
-                        <li><%= message %></li>
-                    <% end %>
-                </ul>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <% flash[:tweet_msg].each do |message| %>
+                            <li><%= message %></li>
+                        <% end %>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 <script>
 $(document).ready(function(){
@@ -26,3 +27,5 @@ $(document).ready(function(){
   $("#ModalTweetError").modal("show");
 });
 </script>
+
+<% end %>
