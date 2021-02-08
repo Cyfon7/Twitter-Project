@@ -3,7 +3,7 @@
     <img src="<%= @tweet.user.image %>" class="mr-3 rounded-circle" alt="..." width="64" height="64">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mt-0"><%= @tweet.user.name %></h5>
-      <small id="TimeAgo"><%= time_ago_in_words(@tweet.created_at) %></small>
+      <small id="TimeAgo"><%= time_ago_in_words(@tweet.created_at) %> ago</small>
     </div>
   </div>
 
