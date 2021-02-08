@@ -1,7 +1,7 @@
 <%= form_with(model: tweet, local: true) do |form| %>
 
-    <li class="media p-2">
-        <img src="<%= current_user.image %>" class="mr-3 border border-primary rounded-circle" alt="..." width="64" height="64">
+    <li class="media p-2" id="FormForTweet">
+        <img src="<%= current_user.image %>" class="mr-3 border border-primary rounded-circle bg-white" alt="..." width="64" height="64">
         <div class="media-body">
             <div class="field text-center pr-5">
             <!-- <%= tweet.id %>  <!-- Uncomment to see Tweet ID -->

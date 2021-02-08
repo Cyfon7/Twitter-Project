@@ -50,5 +50,8 @@ i {
 
 #TimeAgo {
     padding-right: 2rem;
-    
+}
+
+#FormForTweet {
+    background-color: rgb(29, 161, 242);
 }
