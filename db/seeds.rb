@@ -7,9 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-User.delete_all
-Tweet.delete_all
+
+Friend.delete_all
 Like.delete_all
+Tweet.delete_all
+User.delete_all
 
 user = User.create([
     { name: "Jorge",   email: "jorge@mail.com",  image: Faker::Avatar.image(size: "65x65"), password: "123456", password_confirmation: "123456" },
@@ -35,7 +37,7 @@ end
 50.times do
     rt = Tweet.order('RANDOM()').first
     tweet = Tweet.order('RANDOM()').last
-    Tweet.where(id: rt.id).update(tweet_id: tweet.id)
+    Tweet.find(rt.id).update(tweet_id: tweet.id)
 end
 
 200.times do
@@ -45,4 +47,15 @@ end
         user_id: user.id,
         tweet_id: tweet.id
     )
+end
+
+40.times do
+    user = User.order('RANDOM()').first
+    friend = Friend.create(user_id: user.id)
+end
+
+40.times do
+    friend = Friend.order('RANDOM()').first
+    user = User.order('RANDOM()').last
+    Friend.find(friend.id).update(friend_id: user.id)
 end

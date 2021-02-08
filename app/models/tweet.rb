@@ -6,6 +6,9 @@ class Tweet < ApplicationRecord
     
     validates :content, presence: true
 
+    scope :tweets_for_me, -> (friend_list) {
+        where(user_id: friend_list)
+    };
 
     def self.get_author_name(id)
         find(id).user.name
