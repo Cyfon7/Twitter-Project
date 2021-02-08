@@ -1,4 +1,5 @@
 <% if flash[:error_tw] %>
+    
     <div class="modal fade" id="ModalTweetError" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -20,12 +21,12 @@
             </div>
         </div>
     </div>
+ <% end %>   
 
     <script>
-        $(document).ready(function(){
-        // Show the Modal on load
-        $("#ModalTweetError").modal("show");
-        });
+            if( <%= flash[:error_tw] %> ){
+                // Show the Modal on load
+                $('#ModalTweetError').modal('show');
+            }
     </script>
 
-<% end %>

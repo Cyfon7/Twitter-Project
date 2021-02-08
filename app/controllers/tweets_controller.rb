@@ -25,7 +25,6 @@ class TweetsController < ApplicationController
 
   # POST /tweets or /tweets.json
   def create
-    flash.discard
     @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
 
