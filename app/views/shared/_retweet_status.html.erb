@@ -2,5 +2,7 @@
     <%= link_to home_path(rt_id: tweet.id) do %>
         <i class="fas fa-sync fa-2x"></i>
     <% end %>
-    <%= tweet.retweets.count %>
+<% else %>
+    <i class="fas fa-sync fa-2x"></i>
 <% end %>
+    <%= tweet.retweets.count %>
