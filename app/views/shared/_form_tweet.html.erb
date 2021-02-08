@@ -12,7 +12,7 @@
                 <%= form.text_area :content, size:"90x2", placeholder: "What's Going On?" %>
                 
             <!-- Only when RT is in progress -->
-                <%= render 'shared/retweet_layout', id: params[:rt_id] %>
+                <%= render 'shared/retweet_layout', rt_id: params[:rt_id] %>
       
             </div>
             <div class="actions text-right pr-5">

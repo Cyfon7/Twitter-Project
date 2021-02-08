@@ -3,14 +3,16 @@
   <div class="media-body">
     <div class="d-flex w-100 justify-content-between">
         <h5 class="mt-0"><%= user.name %></h5>
-        <small><%= tweet.created_at %></small>
+        <%= link_to tweet_path(tweet) do %>
+          <small><%= tweet.created_at %></small>
+        <% end %>
     </div>
     <div>
         <!-- <%= tweet.id %>  <!-- Uncomment to see Tweet ID -->
         <%= tweet.content %>
 
         <!-- Only when RT is present -->
-        <%= render 'shared/retweet_layout', id: tweet.tweet_id %>
+        <%= render 'shared/retweet_layout', rt_id: tweet.tweet_id %>
 
     </div>
     <div class="row text-center mt-2">
