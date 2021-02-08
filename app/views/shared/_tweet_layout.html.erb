@@ -1,15 +1,15 @@
-<li class="media border border-primary p-2">
-  <img src="<%= user.image %>" class="mr-3 border border-primary rounded-circle" alt="..." width="64" height="64">
+<li class="media p-2">
+  <img src="<%= user.image %>" class="mr-3 rounded-circle" alt="..." width="64" height="64">
   <div class="media-body">
     <div class="d-flex w-100 justify-content-between">
         <h5 class="mt-0"><%= user.name %></h5>
         <%= link_to tweet_path(tweet) do %>
-          <small><%= time_ago_in_words(tweet.created_at) %></small>
+          <small id="TimeAgo"><%= time_ago_in_words(tweet.created_at) %> ago</small>
         <% end %>
     </div>
-    <div>
+    <div id="Content">
         <!-- <%= tweet.id %>  <!-- Uncomment to see Tweet ID -->
-        <%= tweet.content %>
+        <p><%= tweet.content %></p>
 
         <!-- Only when RT is present -->
         <%= render 'shared/retweet_layout', rt_id: tweet.tweet_id %>

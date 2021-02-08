@@ -13,3 +13,42 @@
  *= require_tree .
  *= require_self
  */
+
+* a:hover {
+    background-color: transparent !important;
+    color: rgb(170, 184, 194) !important;
+}
+
+i {
+    color: rgb(29, 161, 242);
+}
+
+.media, .card {
+    border: 1px solid rgb(29, 161, 242);
+    border-radius: 40px;
+}
+
+.media img {
+    border: 1px solid white
+}
+
+.media h5, #Content {
+    color: black;
+}
+
+#Content {
+    margin-right: 2rem;
+}
+
+.card .card-body {
+    margin-left: 2rem;
+}
+
+#Content p {
+    margin-bottom: 1rem;
+}
+
+#TimeAgo {
+    padding-right: 2rem;
+    
+}

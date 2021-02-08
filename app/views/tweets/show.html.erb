@@ -1,13 +1,13 @@
-<div class="card border-success mb-3">
-  <div class="card-header media">
-    <img src="<%= @tweet.user.image %>" class="mr-3 border border-primary rounded-circle" alt="..." width="64" height="64">
-        <div class="d-flex w-100 justify-content-between">
-        <h5 class="mt-0"><%= @tweet.user.name %></h5>
-        <small><%= time_ago_in_words(@tweet.created_at) %></small>
+<div class="card mb-3">
+  <div class="card-header media border-0">
+    <img src="<%= @tweet.user.image %>" class="mr-3 rounded-circle" alt="..." width="64" height="64">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mt-0"><%= @tweet.user.name %></h5>
+      <small id="TimeAgo"><%= time_ago_in_words(@tweet.created_at) %></small>
     </div>
   </div>
 
-  <div class="card-body">
+  <div class="card-body" id="Content">
     <h5 class="card-title"><%= @tweet.content %></h5>
     <!-- Only when RT is present -->
     <p class="card-text"><%= render 'shared/retweet_layout', rt_id: @tweet.tweet_id %></p>    
