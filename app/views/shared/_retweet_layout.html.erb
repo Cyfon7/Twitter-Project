@@ -4,7 +4,9 @@
         <div class="media-body">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mt-0"><%= @tweets.get_author_name(rt_id) %></h5>
-                <small><%= @tweets.get_created(rt_id) %></small>
+                <%= link_to tweet_path(@tweets.find(rt_id)) do %>
+                    <small><%= time_ago_in_words(@tweets.get_created(rt_id)) %></small>
+                <% end %>
             </div>
             <div>
                 <!-- <%= @tweets.get_id(rt_id) %>  <!-- Uncomment to see RTweet ID -->

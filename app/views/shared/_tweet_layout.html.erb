@@ -4,7 +4,7 @@
     <div class="d-flex w-100 justify-content-between">
         <h5 class="mt-0"><%= user.name %></h5>
         <%= link_to tweet_path(tweet) do %>
-          <small><%= tweet.created_at %></small>
+          <small><%= time_ago_in_words(tweet.created_at) %></small>
         <% end %>
     </div>
     <div>

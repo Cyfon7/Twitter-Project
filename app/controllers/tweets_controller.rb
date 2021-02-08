@@ -1,6 +1,8 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
 
+  helper_method :calc_time_ago
+
   # GET /tweets or /tweets.json
   def index
     @tweets = Tweet.all
