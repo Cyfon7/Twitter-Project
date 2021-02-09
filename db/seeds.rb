@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-User.delete_all
-Tweet.delete_all
 Like.delete_all
+Tweet.delete_all
+User.delete_all
 
 user = User.create([
     { name: "Jorge",   email: "jorge@mail.com",  image: Faker::Avatar.image(size: "65x65"), password: "123456", password_confirmation: "123456" },
