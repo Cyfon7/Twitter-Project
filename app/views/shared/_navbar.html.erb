@@ -5,6 +5,14 @@
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
+        
+            <form class="d-flex ml-auto">    
+                <button class="btn btn-outline-light" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>  
+                <input class="form-control me-5" type="search" placeholder="Search on Twitter" aria-label="Search">
+            </form>
+
             <ul class="navbar-nav ml-auto">
                 <% if current_user %>
                     <li class="nav-item">
