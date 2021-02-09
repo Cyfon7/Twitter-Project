@@ -56,7 +56,7 @@ end
 
 40.times do
     friend = Friend.order('RANDOM()').first
-    user = User.order('RANDOM()').last
+    user = User.order('RANDOM()').first
     Friend.find(friend.id).update(friend_id: user.id)
 end
 
