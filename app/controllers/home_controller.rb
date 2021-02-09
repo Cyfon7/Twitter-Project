@@ -2,13 +2,31 @@ class HomeController < ApplicationController
 
     before_action :set_current_tweet
     def index
+
         if current_user
-            @tweets_page = Tweet.tweets_for_me(set_list_friends).order(created_at: :desc).page(params[:page]) #Se ordena en forma descendiente
+            @tweets_consult= Tweet.tweets_for_me(set_list_friends)
         else
-            @tweets_page = Tweet.order(created_at: :desc).page(params[:page]) #Se ordena en forma descendiente
+            @tweets_consult = Tweet.all
         end
+        
+        if ( flash[:search_in_progress] && ( params[:search] != "" ) )
+            @tweets_searched = @tweets_consult.where("content Like ?", "%#{params[:search]}%")
+            flash[:search_in_progress] = false
+            @tweets_consult = @tweets_searched
+            params[:partial_content] = ""
+        end
+
+        #Descendent Order + Pagination
+        @tweets_page = @tweets_consult.order(create_at: :desc).page(params[:page])
+
         @tweets = Tweet.all
 
+    end
+
+    def do_search
+        respond_to do |format|
+            format.html { redirect_to root_path(search: params[:partial_content]), flash: { search_in_progress: true }}
+        end
     end
 
     private
