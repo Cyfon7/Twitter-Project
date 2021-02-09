@@ -12,3 +12,10 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+   
+#To Fix ActiveAdmin CSS Override
+    # assets pipeline config to work on Heroku
+    Rails.application.config.assets.initialize_on_precompile = false
+
+    # add active admin assets to precompile list, loaded from vendor/assets
+    Rails.application.config.assets.precompile += %w( active_admin.js active_admin.css.scss )
