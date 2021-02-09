@@ -22,6 +22,10 @@
     
     <div class="container m-5 px-5">
       <br><br><br>
+      <% if flash[:notice] %>
+        <h5 class="notice alert alert-info text-center mx-5" role="alert">
+          <% notice %>
+        </h5>
       <%= yield %>
     </div>
 
