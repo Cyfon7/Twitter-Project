@@ -24,8 +24,9 @@
       <br><br><br>
       <% if flash[:notice] %>
         <h5 class="notice alert alert-info text-center mx-5" role="alert">
-          <% notice %>
+          <%= notice %>
         </h5>
+      <% end %>
       <%= yield %>
     </div>
 
