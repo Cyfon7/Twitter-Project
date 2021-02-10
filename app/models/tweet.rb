@@ -13,17 +13,14 @@ class Tweet < ApplicationRecord
     def generate_hashtag
 
         content_words = self.content.split
-
         content_words.map! do |word|
-            if word.include?("#")
-                "<a href='/?search=#{word}', flash: {search_in_progress: true }>#{word}</a>"
+            if word.include?("#")               
+                "<a rel='nofollow' data-method='post' href='/home?search=%23#{word.delete_prefix('#')}'>#{word}</a>"                               
             else
                 word
             end
         end
-
         self.content = content_words.join(" ")
-        
     end
 
     def self.get_author_name(id)
