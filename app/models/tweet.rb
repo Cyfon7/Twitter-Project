@@ -10,6 +10,22 @@ class Tweet < ApplicationRecord
         where(user_id: friend_list)
     };
 
+    def generate_hashtag
+
+        content_words = self.content.split
+
+        content_words.map! do |word|
+            if word.include?("#")
+                "<a href='/?search=#{word}', flash: {search_in_progress: true }>#{word}</a>"
+            else
+                word
+            end
+        end
+
+        self.content = content_words.join(" ")
+        
+    end
+
     def self.get_author_name(id)
         find(id).user.name
     end

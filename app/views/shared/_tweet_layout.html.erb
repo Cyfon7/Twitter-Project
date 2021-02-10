@@ -9,7 +9,7 @@
     </div>
     <div id="Content">
         <!-- <%= tweet.id %>  <!-- Uncomment to see Tweet ID -->
-        <p><%= tweet.content %></p>
+        <p><%= tweet.content.html_safe %></p>
 
         <!-- Only when RT is present -->
         <%= render 'shared/retweet_layout', rt_id: tweet.tweet_id %>
