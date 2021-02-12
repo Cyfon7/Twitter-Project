@@ -19,8 +19,12 @@
     color: rgb(170, 184, 194) !important;
 }
 
-i {
+i, #HashTagLink {
     color: rgb(29, 161, 242);
+}
+
+#HashTagLink {
+    font-weight: bold;
 }
 
 .media, .card {

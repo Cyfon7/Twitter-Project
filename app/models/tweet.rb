@@ -15,7 +15,7 @@ class Tweet < ApplicationRecord
         content_words = self.content.split
         content_words.map! do |word|
             if word.include?("#")               
-                "<a rel='nofollow' data-method='post' href='/home?search=%23#{word.delete_prefix('#')}'>#{word}</a>"                               
+                "<a rel='nofollow' id='HashTagLink' data-method='post' href='/home?search=%23#{word.delete_prefix('#')}'>#{word}</a>"                               
             else
                 word
             end
