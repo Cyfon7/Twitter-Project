@@ -10,8 +10,15 @@ class Tweet < ApplicationRecord
         where(user_id: friend_list)
     };
 
-    def generate_hashtag
+    scope :tweets_daterange, -> (date1, date2) {
+        if date1 == date2
+            where(created_at: ( date1.to_date ... (date1.to_date + 23.hour + 59.minute + 59.second) ) )
+        else
+            where(created_at: ( date1.to_date ... (date2.to_date + 23.hour + 59.minute + 59.second) ) )
+        end
+    };
 
+    def generate_hashtag
         content_words = self.content.split
         content_words.map! do |word|
             if word.include?("#")               
@@ -22,11 +29,6 @@ class Tweet < ApplicationRecord
         end
         self.content = content_words.join(" ")
     end
-
-    def get_lastest_tweets(num)
-        Tweet.last(50)
-    end
-    
 
     def self.get_author_name(id)
         find(id).user.name

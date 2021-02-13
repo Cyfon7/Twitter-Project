@@ -62,21 +62,31 @@ class TweetsController < ApplicationController
     end
   end
 
+    #API methods
+    #Renders a JSON of the last 50 tweets
   def news
     @tweets = Tweet.last(50)
 
-    tweet_record = @tweets.map do |tweet|
-      {
-        id: tweet.id,
-        content: tweet.content,
-        like_count: tweet.likes.count,
-        retweets_count: tweet.retweets.count,
-        retwitted_from: tweet.tweet_id
-      }
-    end
+    tweet_record = tweet_to_json(@tweets)
 
     render json: tweet_record
+  end
 
+    #Render a JSON of tweets between 2 dates
+  def tweets_btw_dates
+    @tweets = Tweet.all
+    
+    if ( validate_date( params[:date1] ) && validate_date( params[:date2] ) )      
+      if  dates_range_ok?( params[:date1], params[:date2] )     
+        @tweets = @tweets.tweets_daterange( params[:date1], params[:date2] )
+        tweet_record = tweet_to_json(@tweets, true)
+        render json: tweet_record
+      else
+        render json: { msg: "Url syntax must be ~/api/<start_date>/<end_date>" }
+      end
+    else
+      render json: { msg: "Date format must be dd-mm-yyyy" }
+    end
   end
 
   private
@@ -88,5 +98,37 @@ class TweetsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def tweet_params
       params.require(:tweet).permit(:content, :tweet_id)
+    end
+
+    def validate_date(date)
+      date.match?('^\d{2}-\d{2}-\d{4}$')
+    end
+
+    def dates_range_ok?(date1, date2)
+      date1.to_date <= date2.to_date
+    end
+
+    def tweet_to_json(tweets, dates = false)
+      if dates
+        tweets.map do |tweet|
+          {
+            id: tweet.id,
+            content: tweet.content,
+            like_count: tweet.likes.count,
+            retweets_count: tweet.retweets.count,
+            created_at: tweet.created_at
+          }  
+        end
+      else
+        tweets.map do |tweet|
+          {
+            id: tweet.id,
+            content: tweet.content,
+            like_count: tweet.likes.count,
+            retweets_count: tweet.retweets.count,
+            retwitted_from: tweet.tweet_id,
+          }  
+        end
+      end
     end
 end
