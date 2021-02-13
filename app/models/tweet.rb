@@ -23,6 +23,11 @@ class Tweet < ApplicationRecord
         self.content = content_words.join(" ")
     end
 
+    def get_lastest_tweets(num)
+        Tweet.last(50)
+    end
+    
+
     def self.get_author_name(id)
         find(id).user.name
     end

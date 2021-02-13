@@ -62,6 +62,23 @@ class TweetsController < ApplicationController
     end
   end
 
+  def news
+    @tweets = Tweet.last(50)
+
+    tweet_record = @tweets.map do |tweet|
+      {
+        id: tweet.id,
+        content: tweet.content,
+        like_count: tweet.likes.count,
+        retweets_count: tweet.retweets.count,
+        retwitted_from: tweet.tweet_id
+      }
+    end
+
+    render json: tweet_record
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tweet
