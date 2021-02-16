@@ -1,7 +1,6 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_user!
-  #basic_authenticate_with email: "jorge@mail.com", password: "123456"
+  skip_before_action :authenticate_user!, only: [:news, :tweets_btw_dates]
 
   # GET /tweets or /tweets.json
   def index
@@ -27,11 +26,8 @@ class TweetsController < ApplicationController
   def create
  
     @tweet = Tweet.new(tweet_params)
-    if request.format.json?
-      @tweet.user = User.find_by(email: params[:api_email])
-    else
-      @tweet.user = current_user
-    end
+    byebug
+    @tweet.user = current_user
     
     @tweet.generate_hashtag
 
