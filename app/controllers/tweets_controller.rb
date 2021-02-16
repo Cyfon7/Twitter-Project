@@ -26,7 +26,7 @@ class TweetsController < ApplicationController
   def create
  
     @tweet = Tweet.new(tweet_params)
-    byebug
+    
     @tweet.user = current_user
     
     @tweet.generate_hashtag
