@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
-
-  helper_method :calc_time_ago
+  skip_before_action :authenticate_user!
+  #basic_authenticate_with email: "jorge@mail.com", password: "123456"
 
   # GET /tweets or /tweets.json
   def index
@@ -25,8 +25,14 @@ class TweetsController < ApplicationController
 
   # POST /tweets or /tweets.json
   def create
+ 
     @tweet = Tweet.new(tweet_params)
-    @tweet.user = current_user
+    if request.format.json?
+      @tweet.user = User.find_by(email: params[:api_email])
+    else
+      @tweet.user = current_user
+    end
+    
     @tweet.generate_hashtag
 
     respond_to do |format|
@@ -78,8 +84,10 @@ class TweetsController < ApplicationController
     
     if ( validate_date( params[:date1] ) && validate_date( params[:date2] ) )      
       if  dates_range_ok?( params[:date1], params[:date2] )     
+
         @tweets = @tweets.tweets_daterange( params[:date1], params[:date2] )
         tweet_record = tweet_to_json(@tweets, true)
+        
         render json: tweet_record
       else
         render json: { msg: "Url syntax must be ~/api/<start_date>/<end_date>" }
@@ -88,6 +96,8 @@ class TweetsController < ApplicationController
       render json: { msg: "Date format must be dd-mm-yyyy" }
     end
   end
+
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   #Route for generating json with the last 50 tweets
   get 'api/news', to: "tweets#news"  
 
+  #Route for generating json of tweets between 2 dates
   get 'api/:date1/:date2', to: "tweets#tweets_btw_dates"
 end

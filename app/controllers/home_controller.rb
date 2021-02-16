@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-
+    skip_before_action :authenticate_user!
     before_action :set_current_tweet
     def index
         @tweets = Tweet.all
@@ -19,7 +19,6 @@ class HomeController < ApplicationController
 
         #Descendent Order + Pagination
         @tweets_page = @tweets_consult.order(created_at: :desc).page(params[:page])
-        
 
     end
 
