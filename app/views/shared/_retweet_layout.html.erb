@@ -10,7 +10,7 @@
             </div>
             <div id="Content">
                 <!-- <%= @tweets.get_id(rt_id) %>  <!-- Uncomment to see RTweet ID -->
-                <p class="text-justify"><%= @tweets.get_content(rt_id) %></p>
+                <p class="text-justify"><%= @tweets.get_content(rt_id).html_safe %></p>
             </div>
         </div>                    
     </div>

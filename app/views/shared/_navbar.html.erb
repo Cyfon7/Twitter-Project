@@ -5,6 +5,9 @@
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
+
+            <%= render 'shared/form_search_content' %>
+            
             <ul class="navbar-nav ml-auto">
                 <% if current_user %>
                     <li class="nav-item">
@@ -19,6 +22,7 @@
                     </li>
                 <% end %>
             </ul>
+
         </div>
     </div>
 </nav>

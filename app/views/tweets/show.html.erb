@@ -8,7 +8,7 @@
   </div>
 
   <div class="card-body" id="Content">
-    <h5 class="card-title"><%= @tweet.content %></h5>
+    <h5 class="card-title"><%= @tweet.content.html_safe %></h5>
     <!-- Only when RT is present -->
     <p class="card-text"><%= render 'shared/retweet_layout', rt_id: @tweet.tweet_id %></p>    
   </div>

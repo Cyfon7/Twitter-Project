@@ -1,0 +1,8 @@
+<%= form_with(url: do_search_path, local: true) do |form| %>
+   
+    <button class="actions btn btn-outline-light" type="form.submit">
+        <i class="fas fa-search"></i>
+    </button>  
+    <%= form.search_field :search, placeholder: "Search on Twitter" %>
+
+<% end %>

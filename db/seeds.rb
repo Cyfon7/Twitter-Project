@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
+
+Friend.delete_all
 Like.delete_all
 Tweet.delete_all
 User.delete_all
@@ -35,7 +37,7 @@ end
 50.times do
     rt = Tweet.order('RANDOM()').first
     tweet = Tweet.order('RANDOM()').last
-    Tweet.where(id: rt.id).update(tweet_id: tweet.id)
+    Tweet.find(rt.id).update(tweet_id: tweet.id)
 end
 
 200.times do
@@ -46,3 +48,16 @@ end
         tweet_id: tweet.id
     )
 end
+
+40.times do
+    user = User.order('RANDOM()').first
+    friend = Friend.create(user_id: user.id)
+end
+
+40.times do
+    friend = Friend.order('RANDOM()').first
+    user = User.order('RANDOM()').first
+    Friend.find(friend.id).update(friend_id: user.id)
+end
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
