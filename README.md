@@ -11,8 +11,8 @@ This project has a seed that generates:
 - 40 relations of followers
 - 1 admin account
 
-To use any user account created do
- email   : username@mail.com   (lowercase)
+To use any user account created do: i.e. user: Jorge ->
+ email   : jorge@mail.com   
  password: 123456
 
 To use the admin account Add ~/admin to the root url
