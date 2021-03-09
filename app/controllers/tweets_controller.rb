@@ -130,6 +130,7 @@ class TweetsController < ApplicationController
           {
             id: tweet.id,
             content: tweet.content,
+            user_id: tweet.user_id,
             like_count: tweet.likes.count,
             retweets_count: tweet.retweets.count,
             retwitted_from: tweet.tweet_id,
