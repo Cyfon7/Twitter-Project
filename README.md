@@ -31,3 +31,24 @@ that complies with the searching params.
 The best way to visualize the hashtag and normal search features its by trying it 
 as a visit (because Hito-2 limitations)
 
+API Features (Hito-3)
+To receive a the last 50 tweets in JSON format
+* Add ~/api/news to the root url
+* Do a GET request
+
+To receive the tweets between 2 dates in JSON format
+* Add ~/api/date1/date2 to the root url 
+  (date1 & date2 are just for ilustration, you must ingress a date in dd-mm-yyyy format)
+* Do a GET request
+
+To create a Tweet (Tested with Postman)
+* Add ~/tweets.json to the root url
+* At Authorization tab, select Basic Auth and fill the Username Password fields to define the author of the tweet
+* At the Body tab write a hash with only the content. Please refer to the following format
+    i.e.:
+    {
+        "tweet": {
+            "content": "#Postman direct post"
+        }
+    }
+* Do a POST request
